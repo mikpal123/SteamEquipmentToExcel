@@ -35,6 +35,8 @@
             this.filePathBox = new System.Windows.Forms.TextBox();
             this.filePathButton = new System.Windows.Forms.Button();
             this.statusBox = new System.Windows.Forms.TextBox();
+            this.priceCheck = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // info1
@@ -57,7 +59,7 @@
             // 
             // generate
             // 
-            this.generate.Location = new System.Drawing.Point(14, 161);
+            this.generate.Location = new System.Drawing.Point(17, 172);
             this.generate.Name = "generate";
             this.generate.Size = new System.Drawing.Size(75, 23);
             this.generate.TabIndex = 2;
@@ -98,10 +100,27 @@
             // 
             this.statusBox.BackColor = System.Drawing.Color.Lime;
             this.statusBox.Enabled = false;
-            this.statusBox.Location = new System.Drawing.Point(206, 161);
+            this.statusBox.Location = new System.Drawing.Point(206, 146);
             this.statusBox.Name = "statusBox";
             this.statusBox.Size = new System.Drawing.Size(19, 20);
             this.statusBox.TabIndex = 6;
+            // 
+            // priceCheck
+            // 
+            this.priceCheck.Location = new System.Drawing.Point(17, 146);
+            this.priceCheck.Name = "priceCheck";
+            this.priceCheck.Size = new System.Drawing.Size(100, 20);
+            this.priceCheck.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(14, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Cena od";
             // 
             // Form1
             // 
@@ -109,6 +128,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(295, 371);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.priceCheck);
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.filePathButton);
             this.Controls.Add(this.filePathBox);
@@ -133,6 +154,8 @@
         private System.Windows.Forms.TextBox filePathBox;
         private System.Windows.Forms.Button filePathButton;
         private System.Windows.Forms.TextBox statusBox;
+        private System.Windows.Forms.TextBox priceCheck;
+        private System.Windows.Forms.Label label2;
     }
 }
 

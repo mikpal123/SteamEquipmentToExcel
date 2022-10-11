@@ -26,7 +26,6 @@ namespace SteamEquipmentToExcel
             }           
         }
 
-
         public string makeRequest()
         {
             string strResponseValue = string.Empty;

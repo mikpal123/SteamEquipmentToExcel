@@ -33,11 +33,11 @@ namespace SteamEquipmentToExcel
         {
             if (!string.IsNullOrEmpty(text_Id.Text))
             {
-                DownloadEqupment(text_Id);
+                DownloadEqupment(text_Id, priceCheck);
             }
         }
 
-        private void DownloadEqupment(TextBox name)
+        private void DownloadEqupment(TextBox name, TextBox priceCheck)
         {
             statusBox.BackColor = Color.Red;
             RestCient rClient = new RestCient();
@@ -76,6 +76,7 @@ namespace SteamEquipmentToExcel
                 string myMedianPrice;
 
 
+                int intVal2 = 0;
 
                 Item item = JsonSerializer.Deserialize<Item>(pClient.makeRequest());
                 item.deleteZl();
@@ -85,8 +86,8 @@ namespace SteamEquipmentToExcel
                 {                   
                     lowestPrice = item.lowest_price;
                     float val = Convert.ToSingle(item.lowest_price) * 0.7f;
-                    int intVal = (int)val;
-                    myLowestPrice = intVal.ToString();
+                    intVal2 = (int)val;
+                    myLowestPrice = intVal2.ToString();
                 }
                 else 
                 {
@@ -109,14 +110,31 @@ namespace SteamEquipmentToExcel
                 }
 
                 itemName= marketValues[i];
+                int price;
 
 
+                if (priceCheck.Text == "")
+                {
+                    priceCheck.Text = "0";
+                    float val = Convert.ToSingle(priceCheck.Text);
+                    price = (int)val;
+                }
+                else
+                {
+                    float val = Convert.ToSingle(priceCheck.Text);
+                    price = (int)val;
+                }
 
+                
+                if (intVal2 > price)
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(itemName + ";" + lowestPrice + ";" + medianPrice + ";" + myLowestPrice + ";" + myMedianPrice);
+                    fs.Write(info, 0, info.Length);
+                    byte[] newline = Encoding.ASCII.GetBytes(Environment.NewLine);
+                    fs.Write(newline, 0, newline.Length);
+                }
 
-                byte[] info = new UTF8Encoding(true).GetBytes(itemName + ";" + lowestPrice + ";" + medianPrice + ";" + myLowestPrice + ";" + myMedianPrice);
-                fs.Write(info, 0, info.Length);
-                byte[] newline = Encoding.ASCII.GetBytes(Environment.NewLine);
-                fs.Write(newline, 0, newline.Length);
+                
 
                 debugOutput("pauza");
                 System.Threading.Thread.Sleep(5000);
